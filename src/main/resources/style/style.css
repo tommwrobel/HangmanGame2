@@ -1,0 +1,112 @@
+@font-face {
+    src: url("../fonts/PassionOne-Regular.ttf");
+}
+
+#modal {
+    -fx-background-color: rgb(0, 0, 0, 0.6);
+}
+
+#modal {
+    -fx-visibility: hidden;
+    -fx-background-image: url("/img/modalBackground.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: top center;
+}
+
+#mainMenu {
+ -fx-background-image: url("/img/standardBackground.png");
+}
+
+.infoMessage {
+    -fx-font: normal 24pt "Passion One";
+    -fx-text-fill: #fed6bf;
+    -fx-text-align: center;
+}
+
+.secondaryMessage {
+    -fx-font: normal 24pt "Passion One";
+    -fx-text-fill: #341008;
+    -fx-text-align: center;
+}
+
+#footerMessage {
+    -fx-font: normal 9pt "Arial";
+    -fx-text-fill: #65372c;
+}
+
+.button {
+ -fx-background-color: none;
+ -fx-cursor: hand;
+}
+
+#newGame {
+ -fx-background-image: url("/img/buttonNewGame.png");
+ -fx-pref-width: 200px;
+ -fx-pref-height: 66px;
+}
+#newGame:pressed {
+    -fx-background-image: url("/img/buttonNewGamePressed.png");
+}
+
+#start {
+ -fx-background-image: url("/img/buttonStart.png");
+ -fx-pref-width: 142px;
+ -fx-pref-height: 66px;
+}
+#start:pressed {
+    -fx-background-image: url("/img/buttonStartPressed.png");
+}
+
+#close {
+ -fx-background-image: url("/img/buttonClose.png");
+ -fx-pref-width: 54px;
+ -fx-pref-height: 54px;
+}
+#close:pressed {
+    -fx-background-image: url("/img/buttonClosePressed.png");
+}
+
+#next {
+ -fx-background-image: url("/img/buttonNext.png");
+ -fx-pref-width: 54px;
+ -fx-pref-height: 62px;
+}
+#next:pressed {
+    -fx-background-image: url("/img/buttonNextPressed.png");
+}
+
+#prev {
+ -fx-background-image: url("/img/buttonPrev.png");
+ -fx-pref-width: 54px;
+ -fx-pref-height: 62px;
+}
+#prev:pressed {
+    -fx-background-image: url("/img/buttonPrevPressed.png");
+}
+
+#yes {
+ -fx-background-image: url("/img/buttonYes.png");
+ -fx-pref-width: 120px;
+ -fx-pref-height: 66px;
+}
+#yes:pressed {
+    -fx-background-image: url("/img/buttonYesPressed.png");
+}
+
+#no {
+ -fx-background-image: url("/img/buttonNo.png");
+ -fx-pref-width: 120px;
+ -fx-pref-height: 66px;
+}
+#no:pressed {
+    -fx-background-image: url("/img/buttonNoPressed.png");
+}
+
+#go {
+ -fx-background-image: url("/img/buttonGo.png");
+ -fx-pref-width: 60px;
+ -fx-pref-height: 66px;
+}
+#go:pressed {
+    -fx-background-image: url("/img/buttonGoPressed.png");
+}
