@@ -3,11 +3,6 @@
 }
 
 #modal {
-    -fx-background-color: rgb(0, 0, 0, 0.6);
-}
-
-#modal {
-    -fx-visibility: hidden;
     -fx-background-image: url("/img/modalBackground.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: top center;
@@ -15,6 +10,10 @@
 
 #mainMenu {
  -fx-background-image: url("/img/standardBackground.png");
+}
+
+#categoryModal, #round {
+     -fx-background-image: url("/img/cleanBackground.png");
 }
 
 .infoMessage {
@@ -25,7 +24,7 @@
 
 .secondaryMessage {
     -fx-font: normal 24pt "Passion One";
-    -fx-text-fill: #341008;
+    -fx-text-fill: #37281d;
     -fx-text-align: center;
 }
 
@@ -109,4 +108,28 @@
 }
 #go:pressed {
     -fx-background-image: url("/img/buttonGoPressed.png");
+}
+
+.letterToGuess {
+    -fx-background-image: url("/img/letterBackground.png");
+    -fx-font: normal 36pt "Passion One";
+    -fx-text-fill: #f4c1a5;
+}
+
+.guessedLetter {
+    -fx-background-image: url("/img/letterBackground.png");
+    -fx-font: normal 36pt "Passion One";
+    -fx-text-fill: #37281d;
+}
+
+.hiddenLetter {
+    -fx-text-fill: #f4b998;
+}
+
+#userInputField {
+    -fx-background-image: url("/img/answerFieldBackground.png");
+}
+#userInputField Label {
+    -fx-font: normal 36pt "Passion One";
+    -fx-text-fill: #37281d;
 }

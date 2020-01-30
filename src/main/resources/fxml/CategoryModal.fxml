@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<Pane id="categoryModal" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
+      prefWidth="420.0" fx:controller="com.tom.controller.CategoryModalController">
+
+    <Button fx:id="close" layoutX="346" layoutY="20" styleClass="button" onAction="#exitGame" focusTraversable="false"/>
+
+    <children>
+        <HBox prefWidth="420" alignment="CENTER" layoutY="151">
+            <Pane fx:id="modal" prefHeight="298" prefWidth="354">
+                <children>
+                    <StackPane prefWidth="354" alignment="CENTER" layoutY="22">
+                        <Label styleClass="secondaryMessage">CHOOSE CATEGORY:</Label>
+                    </StackPane>
+                    <BorderPane prefWidth="354" layoutY="85">
+                        <center>
+                            <Label fx:id="category" styleClass="infoMessage">ANIMALS</Label>
+                        </center>
+                        <right>
+                            <Button fx:id="next" styleClass="button" onAction="#displayNextCategory"/>
+                        </right>
+                        <left>
+                            <Button fx:id="prev" styleClass="button" onAction="#displayPrevCategory"/>
+                        </left>
+                    </BorderPane>
+                    <Button fx:id="start" layoutX="106" layoutY="190" styleClass="button" onAction="#startRound"/>
+                </children>
+            </Pane>
+        </HBox>
+
+        <HBox prefWidth="420" alignment="CENTER" layoutY="570">
+            <Label fx:id="footerMessage" textAlignment="CENTER">HangmanGame 2.0 © 2020 by Tomasz Wróbel</Label>
+        </HBox>
+    </children>
+
+
+    <stylesheets>
+        <URL value="@../style/style.css"/>
+    </stylesheets>
+
+</Pane>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<Pane fx:id="round" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
+      prefWidth="420.0">
+
+    <children>
+        <Button fx:id="close" layoutX="346" layoutY="20" styleClass="button" onAction="#exitGame" focusTraversable="false"/>
+
+        <StackPane prefWidth="420" layoutY="96">
+            <Label fx:id="roundInfo" styleClass="secondaryMessage">WORD TO GUESS:</Label>
+        </StackPane>
+
+        <HBox fx:id="wordRow" prefWidth="420" layoutY="140" spacing="4" alignment="CENTER">
+            <children>
+
+            </children>
+        </HBox>
+
+        <StackPane fx:id="gallows" prefWidth="420" prefHeight="175" layoutY="253">
+            <ImageView>
+                <Image fx:id="gallowsLevel" url="/img/hangman0.png"/>
+            </ImageView>
+        </StackPane>
+<!--
+        <Pane fx:id="roundMenu" layoutY="440">
+            <StackPane prefWidth="420">
+                <Label styleClass="infoMessage">NEXT ROUND?</Label>
+            </StackPane>
+
+            <HBox prefWidth="420" spacing="4" alignment="CENTER" layoutY="44">
+                <Button fx:id="yes" styleClass="button"/>
+                <Button fx:id="no" styleClass="button"/>
+            </HBox>
+        </Pane>
+-->
+        <Pane fx:id="roundMenu" layoutY="440">
+            <StackPane prefWidth="420">
+                <Label styleClass="infoMessage">YOUR ANSWER:</Label>
+            </StackPane>
+
+            <HBox prefWidth="420" spacing="4" alignment="CENTER" layoutY="44">
+                <Pane fx:id="userInputField" prefWidth="120" prefHeight="66">
+                    <StackPane prefHeight="60" prefWidth="50" layoutX="55">
+                        <Label fx:id="userInput">A</Label>
+                    </StackPane>
+                </Pane>
+                <Button fx:id="go" styleClass="button" onAction="#checkLetter"/>
+            </HBox>
+        </Pane>
+
+        <HBox prefWidth="420" alignment="CENTER" layoutY="570">
+            <Label fx:id="footerMessage" textAlignment="CENTER">HangmanGame 2.0 © 2020 by Tomasz Wróbel</Label>
+        </HBox>
+    </children>
+
+    <stylesheets>
+        <URL value="@../style/style.css"/>
+    </stylesheets>
+
+</Pane>

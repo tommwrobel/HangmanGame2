@@ -1,0 +1,11 @@
+giraffe
+snake
+rabbit
+Panda
+Parrot
+Mouse
+Hamster
+Shrimp
+Sheep
+Turkey
+Horse
