@@ -55,7 +55,7 @@
         </Pane>
 
         <HBox prefWidth="420" alignment="CENTER" layoutY="570">
-            <Label fx:id="footerMessage" textAlignment="CENTER">HangmanGame 2.0 © 2020 by Tomasz Wróbel</Label>
+            <Label fx:id="footerMessage" textAlignment="CENTER"></Label>
         </HBox>
     </children>
 

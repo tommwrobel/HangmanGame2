@@ -9,31 +9,43 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class CategoryModalController {
-
-    private MainController mainController;
-    private int wordCategoryIndex;
+public class CategoryModalScreenController {
 
     @FXML
     private Button start;
-
     @FXML
     private Button next;
-
     @FXML
     private Button prev;
-
     @FXML
     private Label category;
-
     @FXML
     private Label footerMessage;
 
-    public void CategoryModalController() {
-        wordCategoryIndex = 0;
+    private MainController mainController;
+    private int wordCategoryIndex;
+    private FXMLLoader fxmlLoader;
+
+    public CategoryModalScreenController(MainController mainController) {
+        this.mainController = mainController;
+        this.wordCategoryIndex = 0;
+        this.fxmlLoader = new FXMLLoader();
+        this.fxmlLoader.setLocation(this.getClass().getResource("/fxml/CategoryModalScreen.fxml"));
+        this.fxmlLoader.setController(this);
     }
 
     public void initialize() {
+        footerMessage.setText(mainController.getFooterMessageText());
+    }
+
+    public void showScreen() {
+        Pane pane = null;
+        try {
+            pane = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mainController.setMainPane(pane);
     }
 
     @FXML
@@ -53,34 +65,18 @@ public class CategoryModalController {
         if (wordCategoryIndex > 0) {
             wordCategoryIndex -= 1;
         } else {
-            wordCategoryIndex = numberOfCategories-1;
+            wordCategoryIndex = numberOfCategories - 1;
         }
         category.setText(WordCategory.values()[wordCategoryIndex].getDisplayName());
     }
 
     @FXML
     public void startRound() {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(this.getClass().getResource("/fxml/Round.fxml"));
-        RoundController roundController = new RoundController(WordCategory.values()[wordCategoryIndex]);
-        fxmlLoader.setController(roundController);
-        Pane pane = null;
-
-        try {
-            pane = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        roundController.setMainController(mainController);
-        mainController.setMainPane(pane);
+        mainController.startRound(WordCategory.values()[wordCategoryIndex]);
     }
 
+    @FXML
     public void exitGame() {
         mainController.exitGame();
-    }
-
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }

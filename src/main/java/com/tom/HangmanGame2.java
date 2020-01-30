@@ -1,6 +1,5 @@
 package com.tom;
 
-import com.tom.model.WordCategory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +10,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.File;
-import java.net.URL;
 
 public class HangmanGame2 extends Application {
     public static void main(String[] args) {
@@ -28,7 +26,7 @@ public class HangmanGame2 extends Application {
         mediaPlayer.setAutoPlay(true);
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(this.getClass().getResource("/fxml/Main.fxml"));
+        fxmlLoader.setLocation(this.getClass().getResource("/fxml/MainScreen.fxml"));
 
         Pane rootPane = fxmlLoader.load();
         Scene scene = new Scene(rootPane);

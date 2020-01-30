@@ -5,7 +5,7 @@
 <?import java.net.URL?>
 
 <Pane id="categoryModal" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
-      prefWidth="420.0" fx:controller="com.tom.controller.CategoryModalController">
+      prefWidth="420.0">
 
     <Button fx:id="close" layoutX="346" layoutY="20" styleClass="button" onAction="#exitGame" focusTraversable="false"/>
 
@@ -33,7 +33,7 @@
         </HBox>
 
         <HBox prefWidth="420" alignment="CENTER" layoutY="570">
-            <Label fx:id="footerMessage" textAlignment="CENTER">HangmanGame 2.0 © 2020 by Tomasz Wróbel</Label>
+            <Label fx:id="footerMessage" textAlignment="CENTER"></Label>
         </HBox>
     </children>
 

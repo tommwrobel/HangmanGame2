@@ -27,8 +27,8 @@ public class Word {
 
     public int contains(String letterToCheck) {
         int counter = 0;
-        for(String letterInWord : letters) {
-            if(letterInWord.equals(letterToCheck)) {
+        for (String letterInWord : letters) {
+            if (letterInWord.equals(letterToCheck)) {
                 counter++;
             }
         }
