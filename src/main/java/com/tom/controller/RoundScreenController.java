@@ -37,7 +37,6 @@ public class RoundScreenController extends ScreenController {
     @FXML
     private Label footerMessage;
 
-    private MainController mainController;
     private Word wordToGuess;
     private Set<String> guessedLetters = new HashSet<>();
     private int chancesLeft;
@@ -45,7 +44,7 @@ public class RoundScreenController extends ScreenController {
     private List<String> words;
 
     public RoundScreenController(MainController mainController) {
-        this.mainController = mainController;
+        super(mainController);
     }
 
     public void showScreen() {
@@ -172,8 +171,4 @@ public class RoundScreenController extends ScreenController {
         Collections.shuffle(words);
     }
 
-    @FXML
-    public void exitGame() {
-        mainController.exitGame();
-    }
 }

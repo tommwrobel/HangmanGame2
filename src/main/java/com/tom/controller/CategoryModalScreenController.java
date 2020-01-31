@@ -20,11 +20,10 @@ public class CategoryModalScreenController extends ScreenController{
     @FXML
     private Label footerMessage;
 
-    private MainController mainController;
     private WordCategory currentWordCategory;
 
     public CategoryModalScreenController(MainController mainController) {
-        this.mainController = mainController;
+        super(mainController);
         currentWordCategory = WordCategory.values()[0];
     }
 
@@ -48,10 +47,5 @@ public class CategoryModalScreenController extends ScreenController{
     @FXML
     public void startRound() {
         mainController.startRound(currentWordCategory);
-    }
-
-    @FXML
-    public void exitGame() {
-        mainController.exitGame();
     }
 }

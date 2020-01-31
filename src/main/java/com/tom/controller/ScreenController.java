@@ -1,11 +1,18 @@
 package com.tom.controller;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
 public abstract class ScreenController {
+
+    protected final MainController mainController;
+
+    public ScreenController(MainController mainController) {
+        this.mainController = mainController;
+    }
 
     protected Pane loadPane(String location) {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -19,4 +26,8 @@ public abstract class ScreenController {
         }
     }
 
+    @FXML
+    public void exitGame() {
+        mainController.exitGame();
+    }
 }

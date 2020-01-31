@@ -15,10 +15,8 @@ public class MainMenuScreenController extends ScreenController{
     @FXML
     private Label footerMessage;
 
-    private MainController mainController;
-
     public MainMenuScreenController(MainController mainController) {
-        this.mainController = mainController;
+        super(mainController);
     }
 
     public void showScreen() {
@@ -31,8 +29,4 @@ public class MainMenuScreenController extends ScreenController{
         mainController.chooseCategory();
     }
 
-    @FXML
-    public void exitGame() {
-        mainController.exitGame();
-    }
 }

@@ -23,10 +23,8 @@ public class EndGameScreenController extends ScreenController{
     @FXML
     private Label footerMessage;
 
-    private MainController mainController;
-
     public EndGameScreenController(MainController mainController) {
-        this.mainController = mainController;
+       super(mainController);
     }
 
     public void showScreen(boolean isWin) {
@@ -47,8 +45,4 @@ public class EndGameScreenController extends ScreenController{
         mainController.startGame();
     }
 
-    @FXML
-    public void exitGame() {
-        mainController.exitGame();
-    }
 }
