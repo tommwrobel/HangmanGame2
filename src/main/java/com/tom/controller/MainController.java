@@ -4,12 +4,8 @@ import com.tom.model.Sound;
 import com.tom.model.WordCategory;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
 public class MainController {
 

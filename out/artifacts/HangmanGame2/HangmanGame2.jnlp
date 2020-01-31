@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="HangmanGame2.jnlp">
+  <information>
+    <title>HangmanGame2 by Tomasz Wróbel</title>
+    <vendor>Unknown</vendor>
+    <description>HangmanGame2</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="HangmanGame2.jar" size="8795859" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="420" height="600" main-class="com.tom.HangmanGame2"  name="HangmanGame2" />
+  <update check="background"/>
+</jnlp>

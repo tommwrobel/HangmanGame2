@@ -3,6 +3,7 @@ package com.tom;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -22,7 +23,8 @@ public class HangmanGame2 extends Application {
         Scene scene = new Scene(rootPane);
 
         primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.DECORATED);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/icon.png")));
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -14,13 +14,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
 import java.nio.file.Files;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RoundScreenController {
 
@@ -124,7 +123,7 @@ public class RoundScreenController {
         if (letter.length() > 0) {
             if (!guessedLetters.contains(letter) && wordToGuess.contains(letter) > 0) {
                 guessedLetters.add(letter);
-                if(checkWin()) {
+                if (checkWin()) {
                     endGame(true);
                 }
                 showWordToGuess();
@@ -146,8 +145,8 @@ public class RoundScreenController {
     }
 
     private boolean checkWin() {
-        for(int i = 0; i < wordToGuess.getWordLength(); i++) {
-            if(!guessedLetters.contains(wordToGuess.getLetter(i))) {
+        for (int i = 0; i < wordToGuess.getWordLength(); i++) {
+            if (!guessedLetters.contains(wordToGuess.getLetter(i))) {
                 return false;
             }
         }
@@ -167,20 +166,22 @@ public class RoundScreenController {
 
     private Word getRandomWordToGuess(WordCategory wordCategory) {
 
-        String pathToFile = this.getClass().getResource(wordCategory.getDataFile()).getFile();
+        InputStream inputStream = this.getClass().getResourceAsStream(wordCategory.getDataFile());
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
-        File file = new File(pathToFile);
-        List<String> words = null;
+        Stream<String> wynik = null;
         try {
-            words = Files.readAllLines(file.toPath());
-        } catch (IOException e) {
+            wynik = bufferedReader.lines();
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+        List<String> lines = wynik.collect(Collectors.toList());
+        ArrayList<String> words = new ArrayList<>(lines);
         Collections.shuffle(words);
 
         wordToGuess = new Word(words.get(0).toUpperCase());
-
-        System.out.println(words.get(0));
+        System.out.println(wordToGuess.getWord());
         return wordToGuess;
     }
 
