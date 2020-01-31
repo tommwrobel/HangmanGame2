@@ -2,7 +2,7 @@ package com.tom.model;
 
 public enum WordCategory {
     ANIMALS("/data/animals.txt", "ANIMALS"),
-    PEOPLES("/data/places.txt", "PLACES"),
+    PEOPLES("/data/countries.txt", "COUNTRIES"),
     SCIENCE("/data/science.txt", "SCIENCE");
 
     private String dataFile;

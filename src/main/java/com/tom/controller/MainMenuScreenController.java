@@ -1,5 +1,6 @@
 package com.tom.controller;
 
+import com.tom.model.Sound;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;

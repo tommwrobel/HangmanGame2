@@ -1,4 +1,4 @@
-giraffe
+Giraffe
 snake
 rabbit
 Panda
