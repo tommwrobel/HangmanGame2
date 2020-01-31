@@ -4,24 +4,20 @@ import com.tom.model.Sound;
 import com.tom.model.WordCategory;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
 public class MainController {
 
     @FXML
     private Pane mainPane;
 
-    private MainMenuScreenController mainMenuScreenController;
-    private CategoryModalScreenController categoryModalScreenController;
-    private RoundScreenController roundScreenController;
-    private EndGameScreenController endGameScreenController;
-    private String footerMessageText;
-    private SoundController soundController;
+    private final MainMenuScreenController mainMenuScreenController;
+    private final CategoryModalScreenController categoryModalScreenController;
+    private final RoundScreenController roundScreenController;
+    private final EndGameScreenController endGameScreenController;
+    private final String footerMessageText;
+    private final SoundController soundController;
 
     public MainController() {
         mainMenuScreenController = new MainMenuScreenController(this);
@@ -38,7 +34,7 @@ public class MainController {
         soundController.play(Sound.MAIN_MUSIC, true);
 
         mainPane.addEventHandler(MouseEvent.MOUSE_CLICKED, (key) -> {
-            soundController.play(Sound.CLICK);
+            soundController.play(Sound.CLICK, false);
         });
     }
 
@@ -62,14 +58,6 @@ public class MainController {
 
     public void endGame(boolean winResult) {
         endGameScreenController.showScreen(winResult);
-    }
-
-    public SoundController getSoundController() {
-        return soundController;
-    }
-
-    public String getFooterMessageText() {
-        return footerMessageText;
     }
 
     public void exitGame() {

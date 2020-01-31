@@ -3,7 +3,6 @@ package com.tom.controller;
 import com.tom.model.Word;
 import com.tom.model.WordCategory;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,15 +13,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-public class RoundScreenController {
+public class RoundScreenController extends ScreenController {
+    private static final String ROUND_SCREEN = "/fxml/RoundScreen.fxml";
 
     @FXML
     private Button close;
@@ -44,14 +42,10 @@ public class RoundScreenController {
     private Set<String> guessedLetters = new HashSet<>();
     private int chancesLeft;
     private WordCategory wordCategory;
-    boolean winResult;
+    private List<String> words;
 
     public RoundScreenController(MainController mainController) {
         this.mainController = mainController;
-    }
-
-    public void initialize() {
-        footerMessage.setText(mainController.getFooterMessageText());
     }
 
     public void showScreen() {
@@ -59,15 +53,7 @@ public class RoundScreenController {
         this.wordToGuess = getRandomWordToGuess(wordCategory);
         this.chancesLeft = 8;
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(this.getClass().getResource("/fxml/RoundScreen.fxml"));
-        fxmlLoader.setController(this);
-        Pane pane = null;
-        try {
-            pane = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Pane pane = loadPane(ROUND_SCREEN);
         mainController.setMainPane(pane);
 
         showWordToGuess();
@@ -75,16 +61,18 @@ public class RoundScreenController {
         go.requestFocus();
         showHangman();
 
-        round.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if (key.getCode() == KeyCode.SPACE) {
-                checkLetter();
-            }
-            userInputSetLetter(key.getCode().toString());
-        });
+        round.addEventHandler(KeyEvent.KEY_PRESSED, this::handleKeyEvent);
     }
 
     public void setWordCategory(WordCategory wordCategory) {
         this.wordCategory = wordCategory;
+    }
+
+    private void handleKeyEvent(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.SPACE) {
+            checkLetter();
+        }
+        userInputSetLetter(keyEvent.getCode().toString());
     }
 
     private void showHangman() {
@@ -100,15 +88,14 @@ public class RoundScreenController {
     }
 
     private void showWordToGuess() {
-
         wordRow.getChildren().clear();
-        for (int i = 0; i < wordToGuess.getWordLength(); i++) {
+        for (int i = 0; i < wordToGuess.getLength(); i++) {
             Label letter = new Label();
             letter.setAlignment(Pos.CENTER);
             letter.setPrefHeight(67);
             letter.setPrefWidth(48);
-            if (guessedLetters.contains(wordToGuess.getLetter(i))) {
-                letter.setText(wordToGuess.getLetter(i));
+            if (guessedLetters.contains(wordToGuess.getLetterAt(i))) {
+                letter.setText(wordToGuess.getLetterAt(i));
                 letter.getStyleClass().add("guessedLetter");
             } else {
                 letter.setText("?");
@@ -122,9 +109,9 @@ public class RoundScreenController {
     private void checkLetter() {
         String letter = userInput.getText();
         if (letter.length() > 0) {
-            if (!guessedLetters.contains(letter) && wordToGuess.contains(letter) > 0) {
+            if (!guessedLetters.contains(letter) && wordToGuess.containsLetter(letter) > 0) {
                 guessedLetters.add(letter);
-                if(checkWin()) {
+                if (checkWin()) {
                     endGame(true);
                 }
                 showWordToGuess();
@@ -139,15 +126,14 @@ public class RoundScreenController {
     private void deleteChance() {
         if (chancesLeft > 0) {
             chancesLeft -= 1;
-        }
-        if (chancesLeft == 0) {
+        } else if (chancesLeft == 0) {
             endGame(false);
         }
     }
 
     private boolean checkWin() {
-        for(int i = 0; i < wordToGuess.getWordLength(); i++) {
-            if(!guessedLetters.contains(wordToGuess.getLetter(i))) {
+        for (int i = 0; i < wordToGuess.getLength(); i++) {
+            if (!guessedLetters.contains(wordToGuess.getLetterAt(i))) {
                 return false;
             }
         }
@@ -166,22 +152,24 @@ public class RoundScreenController {
     }
 
     private Word getRandomWordToGuess(WordCategory wordCategory) {
+        loadWords();
+        wordToGuess = new Word(words.get(0).toUpperCase());
+        return wordToGuess;
+    }
 
+    private void loadWords() {
+        if (words != null) {
+            return;
+        }
         String pathToFile = this.getClass().getResource(wordCategory.getDataFile()).getFile();
-
         File file = new File(pathToFile);
-        List<String> words = null;
         try {
             words = Files.readAllLines(file.toPath());
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
         Collections.shuffle(words);
-
-        wordToGuess = new Word(words.get(0).toUpperCase());
-
-        System.out.println(words.get(0));
-        return wordToGuess;
     }
 
     @FXML

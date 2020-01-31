@@ -5,30 +5,26 @@ import java.util.List;
 
 public class Word {
 
-    private String word;
-    private List<String> letters;
+    private final String word;
+    private final List<String> letters;
 
     public Word(String word) {
         this.word = word;
         this.letters = Arrays.asList(word.split("(?!^)"));
     }
 
-    public String getWord() {
-        return word;
-    }
-
-    public int getWordLength() {
+    public int getLength() {
         return word.length();
     }
 
-    public String getLetter(int index) {
+    public String getLetterAt(int index) {
         return letters.get(index).toUpperCase();
     }
 
-    public int contains(String letterToCheck) {
+    public int containsLetter(String letter) {
         int counter = 0;
         for (String letterInWord : letters) {
-            if (letterInWord.equals(letterToCheck)) {
+            if (letterInWord.equals(letter)) {
                 counter++;
             }
         }

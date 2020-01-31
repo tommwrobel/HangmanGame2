@@ -2,14 +2,12 @@ package com.tom.controller;
 
 import com.tom.model.WordCategory;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-import java.io.IOException;
-
-public class CategoryModalScreenController {
+public class CategoryModalScreenController extends ScreenController{
+    private static final String CATEGORY_MODAL_SCREEN = "/fxml/CategoryModalScreen.fxml";
 
     @FXML
     private Button start;
@@ -23,55 +21,33 @@ public class CategoryModalScreenController {
     private Label footerMessage;
 
     private MainController mainController;
-    private int wordCategoryIndex;
+    private WordCategory currentWordCategory;
 
     public CategoryModalScreenController(MainController mainController) {
         this.mainController = mainController;
-        this.wordCategoryIndex = 0;
-    }
-
-    public void initialize() {
-        footerMessage.setText(mainController.getFooterMessageText());
+        currentWordCategory = WordCategory.values()[0];
     }
 
     public void showScreen() {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(this.getClass().getResource("/fxml/CategoryModalScreen.fxml"));
-        fxmlLoader.setController(this);
-        Pane pane = null;
-        try {
-            pane = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Pane pane = loadPane(CATEGORY_MODAL_SCREEN);
         mainController.setMainPane(pane);
     }
 
     @FXML
     public void displayNextCategory() {
-        int numberOfCategories = WordCategory.values().length;
-        if (wordCategoryIndex < numberOfCategories - 1) {
-            wordCategoryIndex += 1;
-        } else {
-            wordCategoryIndex = 0;
-        }
-        category.setText(WordCategory.values()[wordCategoryIndex].getDisplayName());
+        currentWordCategory = WordCategory.getNextInOrder(currentWordCategory);
+        category.setText(currentWordCategory.getDisplayName());
     }
 
     @FXML
     public void displayPrevCategory() {
-        int numberOfCategories = WordCategory.values().length;
-        if (wordCategoryIndex > 0) {
-            wordCategoryIndex -= 1;
-        } else {
-            wordCategoryIndex = numberOfCategories - 1;
-        }
-        category.setText(WordCategory.values()[wordCategoryIndex].getDisplayName());
+        currentWordCategory = WordCategory.getPreviousInOrder(currentWordCategory);
+        category.setText(currentWordCategory.getDisplayName());
     }
 
     @FXML
     public void startRound() {
-        mainController.startRound(WordCategory.values()[wordCategoryIndex]);
+        mainController.startRound(currentWordCategory);
     }
 
     @FXML

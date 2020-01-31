@@ -8,13 +8,14 @@ public enum Sound {
     WRONG_ANSWER("/sound/Click.mp3"),
     GOOD_ANSWER("/sound/Click.mp3");
 
-    private String soundPath;
+    private final String filePath;
 
-    Sound(String soundPath) {
-        this.soundPath = soundPath;
+    Sound(String filePath) {
+        this.filePath = filePath;
     }
 
-    public String getSoundPath() {
-        return soundPath;
+    public String getFilePath() {
+        return this.getClass().getResource(filePath).toString();
     }
+
 }
