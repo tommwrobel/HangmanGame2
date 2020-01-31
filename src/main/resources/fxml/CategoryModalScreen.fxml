@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<Pane id="categoryModal" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
+<Pane fx:id="categoryModal" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
       prefWidth="420.0">
 
     <Button fx:id="close" layoutX="346" layoutY="20" styleClass="button" onAction="#exitGame" focusTraversable="false"/>

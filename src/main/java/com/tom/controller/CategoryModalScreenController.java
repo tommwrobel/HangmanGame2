@@ -24,14 +24,10 @@ public class CategoryModalScreenController {
 
     private MainController mainController;
     private int wordCategoryIndex;
-    private FXMLLoader fxmlLoader;
 
     public CategoryModalScreenController(MainController mainController) {
         this.mainController = mainController;
         this.wordCategoryIndex = 0;
-        this.fxmlLoader = new FXMLLoader();
-        this.fxmlLoader.setLocation(this.getClass().getResource("/fxml/CategoryModalScreen.fxml"));
-        this.fxmlLoader.setController(this);
     }
 
     public void initialize() {
@@ -39,6 +35,9 @@ public class CategoryModalScreenController {
     }
 
     public void showScreen() {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(this.getClass().getResource("/fxml/CategoryModalScreen.fxml"));
+        fxmlLoader.setController(this);
         Pane pane = null;
         try {
             pane = fxmlLoader.load();

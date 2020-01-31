@@ -6,12 +6,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-<Pane id="mainMenu" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
+<Pane fx:id="mainMenu" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
             prefWidth="420.0">
 
     <children>
 
-        <Button fx:id="newGame" layoutX="110" layoutY="460" styleClass="button" onAction="#startGame"/>
+        <Button fx:id="newGame" layoutX="110" layoutY="460" styleClass="button" onAction="#chooseCategory"/>
         <Button fx:id="close" layoutX="346" layoutY="20" styleClass="button" onAction="#exitGame" focusTraversable="false"/>
 
         <ImageView id="boxImage" layoutX="53" layoutY="86">

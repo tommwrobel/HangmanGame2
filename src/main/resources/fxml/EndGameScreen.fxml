@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<Pane fx:id="round" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
+      prefWidth="420.0">
+
+    <children>
+        <Button fx:id="close" layoutX="346" layoutY="20" styleClass="button" onAction="#exitGame"
+                focusTraversable="false"/>
+
+        <Pane fx:id="gameResultModal" prefWidth="300" prefHeight="248" layoutX="60" layoutY="125">
+            <ImageView fx:id="gameResultImage">
+            </ImageView>
+        </Pane>
+
+        <Pane fx:id="roundMenu" layoutY="440">
+            <StackPane prefWidth="420">
+                <Label styleClass="infoMessage">NEXT ROUND?</Label>
+            </StackPane>
+
+            <HBox prefWidth="420" spacing="10" alignment="CENTER" layoutY="44">
+                <Button fx:id="yes" styleClass="button" onAction="#startGame"/>
+                <Button fx:id="no" styleClass="button" onAction="#goToMainMenu"/>
+            </HBox>
+        </Pane>
+
+        <HBox prefWidth="420" alignment="CENTER" layoutY="570">
+            <Label fx:id="footerMessage" textAlignment="CENTER"></Label>
+        </HBox>
+    </children>
+
+    <stylesheets>
+        <URL value="@../style/style.css"/>
+    </stylesheets>
+
+</Pane>

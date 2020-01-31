@@ -10,6 +10,7 @@ public class MainController {
     private MainMenuScreenController mainMenuScreenController;
     private CategoryModalScreenController categoryModalScreenController;
     private RoundScreenController roundScreenController;
+    private EndGameScreenController endGameScreenController;
     private String footerMessageText;
 
     @FXML
@@ -19,7 +20,8 @@ public class MainController {
         mainMenuScreenController = new MainMenuScreenController(this);
         categoryModalScreenController = new CategoryModalScreenController(this);
         roundScreenController = new RoundScreenController(this);
-        footerMessageText = "Stopka";
+        endGameScreenController = new EndGameScreenController(this);
+        footerMessageText = "HangmanGame2 v.1.0 © 2020 by Tomasz Wróbel.";
     }
 
     @FXML
@@ -33,12 +35,20 @@ public class MainController {
     }
 
     public void startGame() {
+        mainMenuScreenController.showScreen();
+    }
+
+    public void chooseCategory() {
         categoryModalScreenController.showScreen();
     }
 
     public void startRound(WordCategory wordCategory) {
         roundScreenController.setWordCategory(wordCategory);
         roundScreenController.showScreen();
+    }
+
+    public void endGame(boolean winResult) {
+        endGameScreenController.showScreen(winResult);
     }
 
     public String getFooterMessageText() {

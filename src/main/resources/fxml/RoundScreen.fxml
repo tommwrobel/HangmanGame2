@@ -2,10 +2,10 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.net.URL?>
-
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+
+<?import java.net.URL?>
 <Pane fx:id="round" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
       prefWidth="420.0">
 
@@ -27,18 +27,7 @@
                 <Image fx:id="gallowsLevel" url="/img/hangman0.png"/>
             </ImageView>
         </StackPane>
-<!--
-        <Pane fx:id="roundMenu" layoutY="440">
-            <StackPane prefWidth="420">
-                <Label styleClass="infoMessage">NEXT ROUND?</Label>
-            </StackPane>
 
-            <HBox prefWidth="420" spacing="4" alignment="CENTER" layoutY="44">
-                <Button fx:id="yes" styleClass="button"/>
-                <Button fx:id="no" styleClass="button"/>
-            </HBox>
-        </Pane>
--->
         <Pane fx:id="roundMenu" layoutY="440">
             <StackPane prefWidth="420">
                 <Label styleClass="infoMessage">YOUR ANSWER:</Label>

@@ -14,10 +14,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -44,17 +40,14 @@ public class RoundScreenController {
     private Label footerMessage;
 
     private MainController mainController;
-    private FXMLLoader fxmlLoader;
     private Word wordToGuess;
     private Set<String> guessedLetters = new HashSet<>();
     private int chancesLeft;
     private WordCategory wordCategory;
+    boolean winResult;
 
     public RoundScreenController(MainController mainController) {
         this.mainController = mainController;
-        this.fxmlLoader = new FXMLLoader();
-        this.fxmlLoader.setLocation(this.getClass().getResource("/fxml/RoundScreen.fxml"));
-        this.fxmlLoader.setController(this);
     }
 
     public void initialize() {
@@ -62,9 +55,13 @@ public class RoundScreenController {
     }
 
     public void showScreen() {
+        this.guessedLetters.clear();
         this.wordToGuess = getRandomWordToGuess(wordCategory);
         this.chancesLeft = 8;
 
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(this.getClass().getResource("/fxml/RoundScreen.fxml"));
+        fxmlLoader.setController(this);
         Pane pane = null;
         try {
             pane = fxmlLoader.load();
@@ -127,6 +124,9 @@ public class RoundScreenController {
         if (letter.length() > 0) {
             if (!guessedLetters.contains(letter) && wordToGuess.contains(letter) > 0) {
                 guessedLetters.add(letter);
+                if(checkWin()) {
+                    endGame(true);
+                }
                 showWordToGuess();
             } else if (!guessedLetters.contains(letter)) {
                 guessedLetters.add(letter);
@@ -141,22 +141,22 @@ public class RoundScreenController {
             chancesLeft -= 1;
         }
         if (chancesLeft == 0) {
-            endGame();
+            endGame(false);
         }
     }
 
+    private boolean checkWin() {
+        for(int i = 0; i < wordToGuess.getWordLength(); i++) {
+            if(!guessedLetters.contains(wordToGuess.getLetter(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @FXML
-    private void endGame() {
-        String path = "/img/endgame.mp4";
-        String pathToFile = this.getClass().getResource(path).getFile();
-        Media media = new Media(new File(pathToFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setAutoPlay(true);
-
-        MediaView mediaView = new MediaView(mediaPlayer);
-
-        round.getChildren().clear();
-        round.getChildren().add(mediaView);
+    private void endGame(boolean winResult) {
+        mainController.endGame(winResult);
     }
 
     private void userInputSetLetter(String letter) {
