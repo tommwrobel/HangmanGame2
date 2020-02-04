@@ -2,7 +2,7 @@ package com.tom.model;
 
 public enum DifficultyLevel {
     EASY(10,45),
-    MEDIUM(8, 5),
+    MEDIUM(8, 30),
     HARD(6, 15);
 
     private int chances;

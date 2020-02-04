@@ -71,14 +71,14 @@ public class NewGameScreenController extends ScreenController {
     @FXML
     public void changeDifficultyLevel(ActionEvent event) {
         Button clicked = (Button) event.getSource();
-        if(!clicked.getId().equals("diff" + currentDifficultyLevel.getDisplayName())) {
+        if (!clicked.getId().equals("diff" + currentDifficultyLevel.getDisplayName())) {
             currentDifficultyLevel = DifficultyLevel.valueOf(clicked.getText());
 
             for (DifficultyLevel diffLvl : DifficultyLevel.values()) {
                 Node node = diffLvlButtons.lookup("#diff" + diffLvl.getDisplayName());
                 node.getStyleClass().clear();
                 node.getStyleClass().add("button");
-                if(currentDifficultyLevel == diffLvl) {
+                if (currentDifficultyLevel == diffLvl) {
                     node.getStyleClass().add("btnDiffLvlActive");
                 } else {
                     node.getStyleClass().add("btnDiffLvl");

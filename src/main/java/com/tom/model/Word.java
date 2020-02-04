@@ -28,8 +28,8 @@ public class Word {
 
     public List<Integer> getLetterIndexes(String letter) {
         List<Integer> result = new ArrayList<>();
-        for(int i = 0; i < getWordLength(); i++) {
-            if(letter.equalsIgnoreCase(getLetter(i))) {
+        for (int i = 0; i < getWordLength(); i++) {
+            if (letter.equalsIgnoreCase(getLetter(i))) {
                 result.add(i);
             }
         }

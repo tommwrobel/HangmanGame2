@@ -134,13 +134,13 @@ public class RoundScreenController extends ScreenController {
     }
 
     private void sunDown() {
-        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(difficultyLevel.getRoundTime()+1), sun);
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(difficultyLevel.getRoundTime() + 1), sun);
         translateTransition.setFromY(0);
         translateTransition.setToY(180);
         translateTransition.setInterpolator(Interpolator.LINEAR);
         translateTransition.play();
 
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(difficultyLevel.getRoundTime()+1), backgroundSkyRed);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(difficultyLevel.getRoundTime() + 1), backgroundSkyRed);
         fadeTransition.setFromValue(0.0);
         fadeTransition.setToValue(1.0);
         fadeTransition.play();

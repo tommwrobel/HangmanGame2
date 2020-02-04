@@ -1,6 +1,5 @@
 package com.tom;
 
-import com.tom.model.Word;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
