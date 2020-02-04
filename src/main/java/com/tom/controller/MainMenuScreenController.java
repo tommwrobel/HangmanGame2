@@ -1,27 +1,23 @@
 package com.tom.controller;
 
-import com.tom.model.Sound;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-import java.io.IOException;
-
-public class MainMenuScreenController {
+public class MainMenuScreenController extends ScreenController {
 
     @FXML
-    private Button newGame;
+    private Button btnNewGame;
     @FXML
-    private Button close;
+    private Button btnClose;
     @FXML
     private Label footerMessage;
 
-    private MainController mainController;
+    private static final String MAIN_MENU_SCREEN = "/fxml/MainMenuScreen.fxml";
 
     public MainMenuScreenController(MainController mainController) {
-        this.mainController = mainController;
+        super(mainController);
     }
 
     public void initialize() {
@@ -29,25 +25,12 @@ public class MainMenuScreenController {
     }
 
     public void showScreen() {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(this.getClass().getResource("/fxml/MainMenuScreen.fxml"));
-        fxmlLoader.setController(this);
-        Pane pane = null;
-        try {
-            pane = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Pane pane = loadPane(MAIN_MENU_SCREEN);
         mainController.setMainPane(pane);
     }
 
     @FXML
     public void chooseCategory() {
         mainController.chooseCategory();
-    }
-
-    @FXML
-    public void exitGame() {
-        mainController.exitGame();
     }
 }

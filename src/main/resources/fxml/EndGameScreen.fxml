@@ -6,30 +6,38 @@
 
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<Pane fx:id="round" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
-      prefWidth="420.0">
+<Pane fx:id="endGameScreen" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
+      prefWidth="500.0">
 
     <children>
-        <Button fx:id="close" layoutX="346" layoutY="20" styleClass="button" onAction="#exitGame"
-                focusTraversable="false"/>
+        <StackPane fx:id="gallows" prefWidth="500" prefHeight="170" layoutY="252">
+        </StackPane>
 
-        <Pane fx:id="gameResultModal" prefWidth="300" prefHeight="248" layoutX="60" layoutY="125">
-            <ImageView fx:id="gameResultImage">
-            </ImageView>
-        </Pane>
+        <VBox spacing="5" layoutY="96">
+            <HBox alignment="CENTER" prefWidth="500">
+                <ImageView fx:id="gameResultTitle">
+                    <Image url="/img/gameTitleWin.png"/>
+                </ImageView>
+            </HBox>
+            <HBox fx:id="wordRow" prefWidth="500" spacing="4" alignment="CENTER">
+                <children>
 
-        <Pane fx:id="roundMenu" layoutY="440">
-            <StackPane prefWidth="420">
-                <Label styleClass="infoMessage">NEXT ROUND?</Label>
+                </children>
+            </HBox>
+        </VBox>
+
+        <VBox layoutY="430" spacing="6">
+            <StackPane prefWidth="500">
+                <Label styleClass="infoMessage">PLAY AGAIN?</Label>
             </StackPane>
 
-            <HBox prefWidth="420" spacing="10" alignment="CENTER" layoutY="44">
-                <Button fx:id="yes" styleClass="button" onAction="#startGame"/>
-                <Button fx:id="no" styleClass="button" onAction="#goToMainMenu"/>
+            <HBox prefWidth="500" spacing="10" alignment="CENTER">
+                <Button fx:id="btnYes" styleClass="button" onAction="#startGame" onMousePressed="#clickSound"/>
+                <Button fx:id="btnNo" styleClass="button" onAction="#goToMainMenu" onMousePressed="#clickSound"/>
             </HBox>
-        </Pane>
+        </VBox>
 
-        <HBox prefWidth="420" alignment="CENTER" layoutY="570">
+        <HBox prefWidth="500" alignment="CENTER" layoutY="570">
             <Label fx:id="footerMessage" textAlignment="CENTER"></Label>
         </HBox>
     </children>
@@ -37,5 +45,4 @@
     <stylesheets>
         <URL value="@../style/style.css"/>
     </stylesheets>
-
 </Pane>

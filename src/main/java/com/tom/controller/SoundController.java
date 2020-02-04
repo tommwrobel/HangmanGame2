@@ -3,31 +3,32 @@ package com.tom.controller;
 import com.tom.model.Sound;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SoundController {
 
-    private MediaPlayer[] sound;
+    private final Map<Sound, MediaPlayer> sounds;
 
     public SoundController() {
-        int numberOfSounds = Sound.values().length;
-        sound = new MediaPlayer[numberOfSounds];
-
-        for(int i = 0; i < numberOfSounds; i++) {
-            Media media = new Media(this.getClass().getResource(Sound.values()[i].getSoundPath()).toString());
-            sound[i] = new MediaPlayer(media);
+        sounds = new HashMap<>();
+        for (Sound sound : Sound.values()) {
+            Media media = new Media(this.getClass().getResource(sound.getFilePath()).toString());
+            sounds.put(sound, new MediaPlayer(media));
         }
     }
 
-    public void play(Sound sound, boolean repeat) {
-        MediaPlayer soundFile = this.sound[sound.ordinal()];
-        soundFile.setCycleCount(MediaPlayer.INDEFINITE);
+    public void play(Sound sound, boolean loop) {
+        MediaPlayer soundFile = this.sounds.get(sound);
+        if (loop) {
+            soundFile.setCycleCount(MediaPlayer.INDEFINITE);
+        }
         soundFile.seek(soundFile.getStartTime());
+        soundFile.setVolume(0.8);
         soundFile.play();
     }
 
-    public void play(Sound sound) {
-        MediaPlayer soundFile = this.sound[sound.ordinal()];
-        soundFile.seek(soundFile.getStartTime());
-        soundFile.play();
+    public void stop(Sound sound) {
+        this.sounds.get(sound).stop();
     }
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<Pane fx:id="newGameScreen" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
+      prefWidth="500.0">
+    <Button fx:id="btnBack" layoutX="430" layoutY="20" styleClass="button" onAction="#backToMainMenu"
+            onMousePressed="#clickSound" focusTraversable="false"/>
+
+    <ImageView fx:id="boxImage" layoutX="93" layoutY="75">
+        <Image url="/img/gameTitle.png"/>
+    </ImageView>
+
+    <children>
+        <VBox prefWidth="374" alignment="CENTER" layoutX="63" layoutY="212" spacing="5">
+
+            <Pane fx:id="modal" prefHeight="108" prefWidth="374" styleClass="modalBox">
+                <VBox spacing="0" layoutY="12">
+                    <HBox alignment="CENTER">
+                        <Label styleClass="optionLabel">CHOOSE DIFFICULTY LEVEL:</Label>
+                    </HBox>
+                    <HBox fx:id="diffLvlButtons" prefWidth="374" alignment="CENTER" spacing="10">
+                        <children>
+
+                        </children>
+                    </HBox>
+                </VBox>
+            </Pane>
+
+            <Pane fx:id="modal" prefHeight="108" prefWidth="374" styleClass="modalBox">
+                <VBox spacing="0" layoutY="12">
+                    <HBox alignment="CENTER">
+                        <Label styleClass="optionLabel">CHOOSE CATEGORY:</Label>
+                    </HBox>
+                    <BorderPane prefWidth="374" style="-fx-padding: 0 20">
+                        <left>
+                            <Button fx:id="btnPrevCategory" styleClass="btnPrev" onAction="#displayPrevCategory"/>
+                        </left>
+                        <center>
+                            <Label fx:id="activeCategory" styleClass="secondaryMessage"/>
+                        </center>
+                        <right>
+                            <Button fx:id="btnNextCategory" styleClass="btnNext"  onAction="#displayNextCategory"/>
+                        </right>
+                    </BorderPane>
+                </VBox>
+            </Pane>
+
+
+        </VBox>
+
+        <Button fx:id="btnStart" layoutX="179" layoutY="460" styleClass="button" onAction="#startRound"
+                onMousePressed="#clickSound"/>
+
+        <HBox prefWidth="500" alignment="CENTER" layoutY="568">
+            <Label fx:id="footerMessage" textAlignment="CENTER"/>
+        </HBox>
+    </children>
+
+    <stylesheets>
+        <URL value="@../style/style.css"/>
+    </stylesheets>
+
+</Pane>

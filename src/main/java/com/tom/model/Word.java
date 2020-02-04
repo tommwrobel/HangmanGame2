@@ -1,5 +1,6 @@
 package com.tom.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,6 +24,16 @@ public class Word {
 
     public String getLetter(int index) {
         return letters.get(index).toUpperCase();
+    }
+
+    public List<Integer> getLetterIndexes(String letter) {
+        List<Integer> result = new ArrayList<>();
+        for(int i = 0; i < getWordLength(); i++) {
+            if(letter.equalsIgnoreCase(getLetter(i))) {
+                result.add(i);
+            }
+        }
+        return result;
     }
 
     public int contains(String letterToCheck) {

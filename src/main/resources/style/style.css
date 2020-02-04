@@ -2,7 +2,7 @@
     src: url("../fonts/PassionOne-Regular.ttf");
 }
 
-#modal {
+.modalBox {
     -fx-background-image: url("/img/modalBackground.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: top center;
@@ -12,19 +12,31 @@
  -fx-background-image: url("/img/standardBackground.png");
 }
 
-#categoryModal, #round {
+#newGameScreen, #roundScreen, #endGameScreen {
      -fx-background-image: url("/img/cleanBackground.png");
 }
 
 .infoMessage {
     -fx-font: normal 24pt "Passion One";
-    -fx-text-fill: #fed6bf;
+    -fx-text-fill: #ffe6d8;
     -fx-text-align: center;
+}
+
+#timeLeft {
+    -fx-font: normal 30pt "Passion One";
+    -fx-text-fill: #ffe6d8;
+    -fx-text-align: left;
 }
 
 .secondaryMessage {
     -fx-font: normal 24pt "Passion One";
     -fx-text-fill: #37281d;
+    -fx-text-align: center;
+}
+
+.optionLabel {
+    -fx-font: normal 16pt "Passion One";
+    -fx-text-fill: #9b7763;
     -fx-text-align: center;
 }
 
@@ -38,88 +50,125 @@
  -fx-cursor: hand;
 }
 
-#newGame {
+.btnDiffLvl {
+    -fx-font: normal 24pt "Passion One";
+    -fx-text-fill: #664330;
+    -fx-text-align: center;
+    -fx-padding: 8px 12px;
+}
+.btnDiffLvlActive {
+    -fx-font: normal 24pt "Passion One";
+    -fx-text-fill: #3a2011;
+    -fx-text-align: center;
+    -fx-padding: 8px 12px;
+    -fx-background-image: url("/img/selectBackground.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+#btnNewGame {
  -fx-background-image: url("/img/buttonNewGame.png");
  -fx-pref-width: 200px;
  -fx-pref-height: 66px;
 }
-#newGame:pressed {
+#btnNewGame:pressed {
     -fx-background-image: url("/img/buttonNewGamePressed.png");
 }
 
-#start {
- -fx-background-image: url("/img/buttonStart.png");
- -fx-pref-width: 142px;
- -fx-pref-height: 66px;
+#btnStart {
+    -fx-background-image: url("/img/buttonStart.png");
+    -fx-pref-width: 142px;
+    -fx-pref-height: 66px;
 }
-#start:pressed {
+#btnStart:pressed {
     -fx-background-image: url("/img/buttonStartPressed.png");
 }
 
-#close {
- -fx-background-image: url("/img/buttonClose.png");
- -fx-pref-width: 54px;
- -fx-pref-height: 54px;
+#btnClose {
+    -fx-background-image: url("/img/buttonClose.png");
+    -fx-pref-width: 54px;
+    -fx-pref-height: 54px;
 }
-#close:pressed {
+#btnClose:pressed {
     -fx-background-image: url("/img/buttonClosePressed.png");
 }
 
-#next {
- -fx-background-image: url("/img/buttonNext.png");
- -fx-pref-width: 54px;
- -fx-pref-height: 62px;
+#btnBack {
+    -fx-background-image: url("/img/buttonBack.png");
+    -fx-pref-width: 50px;
+    -fx-pref-height: 58px;
 }
-#next:pressed {
-    -fx-background-image: url("/img/buttonNextPressed.png");
+#btnBack:pressed {
+    -fx-background-image: url("/img/buttonBackPressed.png");
 }
 
-#prev {
- -fx-background-image: url("/img/buttonPrev.png");
- -fx-pref-width: 54px;
- -fx-pref-height: 62px;
+.btnNext {
+ -fx-background-image: url("/img/buttonNext.png");
+ -fx-pref-width: 42px;
+ -fx-pref-height: 50px;
 }
-#prev:pressed {
+.btnNext:pressed {
+  -fx-background-image: url("/img/buttonNextPressed.png");
+}
+
+.btnPrev {
+ -fx-background-image: url("/img/buttonPrev.png");
+ -fx-pref-width: 42px;
+ -fx-pref-height: 50px;
+}
+.btnPrev:pressed {
     -fx-background-image: url("/img/buttonPrevPressed.png");
 }
 
-#yes {
+#btnYes {
  -fx-background-image: url("/img/buttonYes.png");
  -fx-pref-width: 120px;
  -fx-pref-height: 66px;
 }
-#yes:pressed {
+#btnYes:pressed {
     -fx-background-image: url("/img/buttonYesPressed.png");
 }
 
-#no {
+#btnNo {
  -fx-background-image: url("/img/buttonNo.png");
  -fx-pref-width: 120px;
  -fx-pref-height: 66px;
 }
-#no:pressed {
+#btnNo:pressed {
     -fx-background-image: url("/img/buttonNoPressed.png");
 }
 
-#go {
+#btnGo {
  -fx-background-image: url("/img/buttonGo.png");
  -fx-pref-width: 60px;
  -fx-pref-height: 66px;
 }
-#go:pressed {
+#btnGo:pressed {
     -fx-background-image: url("/img/buttonGoPressed.png");
 }
 
-.letterToGuess {
+.letterBackgroundPane {
     -fx-background-image: url("/img/letterBackground.png");
+}
+
+.letterToGuess {
     -fx-font: normal 36pt "Passion One";
     -fx-text-fill: #f4c1a5;
 }
 
 .guessedLetter {
-    -fx-background-image: url("/img/letterBackground.png");
     -fx-font: normal 36pt "Passion One";
     -fx-text-fill: #37281d;
+}
+
+.guessedLetterEndCorrect {
+     -fx-font: normal 36pt "Passion One";
+     -fx-text-fill: #89ab2c;
+}
+
+.guessedLetterEndWrong {
+    -fx-font: normal 36pt "Passion One";
+    -fx-text-fill: #b01e17;
 }
 
 .hiddenLetter {

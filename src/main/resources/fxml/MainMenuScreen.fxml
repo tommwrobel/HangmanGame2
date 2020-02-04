@@ -7,18 +7,18 @@
 <?import javafx.scene.image.ImageView?>
 
 <Pane fx:id="mainMenu" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
-            prefWidth="420.0">
+            prefWidth="500.0">
 
     <children>
+        <Button fx:id="btnClose" layoutX="426" layoutY="20" styleClass="button" onAction="#exitGame" onMousePressed="#clickSound" focusTraversable="false"/>
 
-        <Button fx:id="newGame" layoutX="110" layoutY="460" styleClass="button" onAction="#chooseCategory"/>
-        <Button fx:id="close" layoutX="346" layoutY="20" styleClass="button" onAction="#exitGame" focusTraversable="false"/>
-
-        <ImageView id="boxImage" layoutX="53" layoutY="86">
+        <ImageView id="boxImage" layoutX="93" layoutY="75">
             <Image url="/img/gameTitle.png"/>
         </ImageView>
 
-        <HBox prefWidth="420" alignment="CENTER" layoutY="570">
+        <Button fx:id="btnNewGame" layoutX="150" layoutY="460" styleClass="button" onAction="#chooseCategory" onMousePressed="#clickSound"/>
+
+        <HBox prefWidth="500" alignment="CENTER" layoutY="568">
             <Label fx:id="footerMessage" textAlignment="CENTER"></Label>
         </HBox>
 

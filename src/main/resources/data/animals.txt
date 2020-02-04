@@ -9,3 +9,12 @@ Shrimp
 Sheep
 Turkey
 Horse
+leopard
+tiger
+gorilla
+Dolphin
+Eagle
+Lobster
+Monkey
+Spider
+Shark
