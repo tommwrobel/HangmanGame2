@@ -10,6 +10,7 @@
       prefWidth="500.0">
 
     <children>
+        <Button fx:id="btnClose" layoutX="426" layoutY="20" styleClass="button" onAction="#exitGame" onMousePressed="#clickSound" focusTraversable="false"/>
         <StackPane fx:id="gallows" prefWidth="500" prefHeight="170" layoutY="252">
         </StackPane>
 
