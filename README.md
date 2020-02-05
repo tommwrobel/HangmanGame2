@@ -1,3 +1,4 @@
+![top](https://user-images.githubusercontent.com/57330987/73878981-e6d27f00-485b-11ea-893a-d3d0a5a18379.png)
 # General info
 This project is for improve Java and testing skills.
 
@@ -15,13 +16,9 @@ This project is for impove Java and Testing skills. Graphic is also my work.
 * Java 8
     * JavaFX
     * MVC pattern
-    * SOLID
-    * DRY
-    * KISS
 * Maven
 * VCS Git
 * JUnit
-* MVP
 * IntelliJ IDE
 * Adobe Photoshop
 * Adobe Illustrator
@@ -32,11 +29,12 @@ Some txt about tests and used libraries.
 ## TODO
 * End game animations
 * Code refractoring
-* Music nad sound effect
+* Music nad sound effects
 
 ## Screenshots
 
 ![Screenshot_01](https://user-images.githubusercontent.com/57330987/73876908-1b443c00-4858-11ea-979a-c731d3467a00.png)
-![Screenshot_02](https://user-images.githubusercontent.com/57330987/73876929-24cda400-4858-11ea-8ff8-27e986175f1f.png)
+![Screenshot_02](https://user-images.githubusercontent.com/57330987/73877660-5bf08500-4859-11ea-96de-2682f7f7b26b.png)
 ![Screenshot_03](https://user-images.githubusercontent.com/57330987/73876951-2a2aee80-4858-11ea-84dc-11da893febfa.png)
 ![Screenshot_04](https://user-images.githubusercontent.com/57330987/73876982-34e58380-4858-11ea-94c0-8f305047e14d.png)
+![Screenshot_05](https://user-images.githubusercontent.com/57330987/73877662-5d21b200-4859-11ea-8054-97fbc54e4fa6.png)
