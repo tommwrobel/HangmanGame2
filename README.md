@@ -36,7 +36,7 @@ Some txt about tests and used libraries.
 
 ## Screenshots
 
-![screenshot_01.png](blob/master/screenshots/screenshot_01.png)
-![screenshot_01.png](blob/master/screenshots/screenshot_02.png)
-![screenshot_01.png](blob/master/screenshots/screenshot_03.png)
-![screenshot_01.png](blob/master/screenshots/screenshot_04.png)
+![screenshot_01.png](screenshots/screenshot_01.png)
+![screenshot_01.png](screenshots/screenshot_02.png)
+![screenshot_01.png](screenshots/screenshot_03.png)
+![screenshot_01.png](screenshots/screenshot_04.png)
