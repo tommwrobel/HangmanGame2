@@ -36,7 +36,7 @@ Some txt about tests and used libraries.
 
 ## Screenshots
 
-![GitHub Logo](screenshots/screenshot_01.png)
-![GitHub Logo](screenshots/screenshot_02.png)
-![GitHub Logo](screenshots/screenshot_03.png)
-![GitHub Logo](screenshots/screenshot_04.png)
+![screenshot_01.png](blob/master/screenshots/screenshot_01.png)
+![screenshot_01.png](blob/master/screenshots/screenshot_02.png)
+![screenshot_01.png](blob/master/screenshots/screenshot_03.png)
+![screenshot_01.png](blob/master/screenshots/screenshot_04.png)
