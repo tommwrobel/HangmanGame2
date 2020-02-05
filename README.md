@@ -1,4 +1,3 @@
-![top](https://user-images.githubusercontent.com/57330987/73878981-e6d27f00-485b-11ea-893a-d3d0a5a18379.png)
 # General info
 This project is for improve Java and testing skills.
 
