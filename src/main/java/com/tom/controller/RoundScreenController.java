@@ -260,6 +260,7 @@ public class RoundScreenController extends ScreenController {
 
     @FXML
     private void endGame(boolean winResult) {
+        timeline.stop();
         mainController.endGame(winResult, wordToGuess, guessedLetters);
     }
 
@@ -289,5 +290,11 @@ public class RoundScreenController extends ScreenController {
         wordToGuess = new Word(words.get(0).toUpperCase());
         System.out.println(wordToGuess.getWord());
         return wordToGuess;
+    }
+
+    @Override
+    public void backToMainMenu() {
+        timeline.stop();
+        super.backToMainMenu();
     }
 }

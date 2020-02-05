@@ -3,7 +3,7 @@ package com.tom.model;
 public enum Category {
     ANIMALS("/data/animals.txt"),
     COUNTRIES("/data/countries.txt"),
-    PREFESSIONS("/data/professions.txt");
+    PROFESSIONS("/data/professions.txt");
 
     private String dataFile;
 
