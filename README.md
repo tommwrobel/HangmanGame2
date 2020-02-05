@@ -36,7 +36,7 @@ Some txt about tests and used libraries.
 
 ## Screenshots
 
-![screenshot_01.png](screenshots/screenshot_01.png)
-![screenshot_01.png](screenshots/screenshot_02.png)
-![screenshot_01.png](screenshots/screenshot_03.png)
-![screenshot_01.png](screenshots/screenshot_04.png)
+![Screenshot_01](https://user-images.githubusercontent.com/57330987/73876908-1b443c00-4858-11ea-979a-c731d3467a00.png)
+![Screenshot_02](https://user-images.githubusercontent.com/57330987/73876929-24cda400-4858-11ea-8ff8-27e986175f1f.png)
+![Screenshot_03](https://user-images.githubusercontent.com/57330987/73876951-2a2aee80-4858-11ea-84dc-11da893febfa.png)
+![Screenshot_04](https://user-images.githubusercontent.com/57330987/73876982-34e58380-4858-11ea-94c0-8f305047e14d.png)
