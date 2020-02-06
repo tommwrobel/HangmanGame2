@@ -6,7 +6,9 @@
 
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<Pane fx:id="newGameScreen" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
+
+<Pane fx:id="roundSettingsMainPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      prefHeight="600.0"
       prefWidth="500.0">
     <Button fx:id="btnBack" layoutX="430" layoutY="20" styleClass="button" onAction="#backToMainMenu"
             onMousePressed="#clickSound" focusTraversable="false"/>
@@ -17,7 +19,6 @@
 
     <children>
         <VBox prefWidth="374" alignment="CENTER" layoutX="63" layoutY="212" spacing="5">
-
             <Pane fx:id="modal" prefHeight="108" prefWidth="374" styleClass="modalBox">
                 <VBox spacing="0" layoutY="12">
                     <HBox alignment="CENTER">
@@ -44,7 +45,7 @@
                             <Label fx:id="activeCategory" styleClass="secondaryMessage"/>
                         </center>
                         <right>
-                            <Button fx:id="btnNextCategory" styleClass="btnNext"  onAction="#displayNextCategory"/>
+                            <Button fx:id="btnNextCategory" styleClass="btnNext" onAction="#displayNextCategory"/>
                         </right>
                     </BorderPane>
                 </VBox>
@@ -62,7 +63,8 @@
     </children>
 
     <stylesheets>
-        <URL value="@../style/style.css"/>
+        <URL value="@../style/mainStyle.css"/>
+        <URL value="@../style/roundSettingsScreenStyle.css"/>
     </stylesheets>
 
 </Pane>

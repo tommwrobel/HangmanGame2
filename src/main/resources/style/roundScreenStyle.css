@@ -1,0 +1,42 @@
+#timeLeft {
+    -fx-font: normal 30pt "Passion One";
+    -fx-text-fill: #ffe6d8;
+    -fx-text-align: left;
+}
+
+#btnGo {
+ -fx-background-image: url("/img/buttonGo.png");
+ -fx-pref-width: 60px;
+ -fx-pref-height: 66px;
+}
+
+#btnGo:pressed {
+    -fx-background-image: url("/img/buttonGoPressed.png");
+}
+
+.letterBackgroundPane {
+    -fx-background-image: url("/img/letterBackground.png");
+}
+
+.letterToGuess {
+    -fx-font: normal 36pt "Passion One";
+    -fx-text-fill: #f4c1a5;
+}
+
+.guessedLetter {
+    -fx-font: normal 36pt "Passion One";
+    -fx-text-fill: #37281d;
+}
+
+.hiddenLetter {
+    -fx-text-fill: #f4b998;
+}
+
+#userInputField {
+    -fx-background-image: url("/img/answerFieldBackground.png");
+}
+
+#userInputField Label {
+    -fx-font: normal 36pt "Passion One";
+    -fx-text-fill: #37281d;
+}

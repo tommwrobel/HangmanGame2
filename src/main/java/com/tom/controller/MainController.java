@@ -16,24 +16,20 @@ public class MainController {
     private Pane mainPane;
 
     private MainMenuScreenController mainMenuScreenController;
-    private NewGameScreenController categoryModalScreenController;
+    private RoundSettingsScreenController roundSettingsScreenController;
     private RoundScreenController roundScreenController;
     private EndGameScreenController endGameScreenController;
     private String footerMessageText;
     private SoundController soundController;
 
     public MainController() {
-        mainMenuScreenController = new MainMenuScreenController(this);
-        categoryModalScreenController = new NewGameScreenController(this);
-        roundScreenController = new RoundScreenController(this);
-        endGameScreenController = new EndGameScreenController(this);
-        soundController = new SoundController();
-        footerMessageText = "HangmanGame2 v.1.0 © 2020 by Tomasz Wróbel.";
+        this.soundController = new SoundController();
+        this.footerMessageText = "HangmanGame2 v.1.0 © 2020 by Tomasz Wróbel.";
     }
 
     @FXML
     public void initialize() {
-        mainMenuScreenController.showScreen();
+        showMainMenuScreen();
         soundController.play(Sound.MAIN_MUSIC, true);
     }
 
@@ -42,21 +38,24 @@ public class MainController {
         mainPane.getChildren().add(pane);
     }
 
-    public void startGame() {
+    public void showMainMenuScreen() {
+        mainMenuScreenController = new MainMenuScreenController(this);
         mainMenuScreenController.showScreen();
     }
 
-    public void chooseCategory() {
-        categoryModalScreenController.showScreen();
+    public void showRoundSettingsScreen() {
+        roundSettingsScreenController = new RoundSettingsScreenController(this);
+        roundSettingsScreenController.showScreen();
     }
 
-    public void startRound(DifficultyLevel difficultyLevel, Category category) {
-        roundScreenController.setupNewRound(difficultyLevel, category);
+    public void showRoundScreen(DifficultyLevel difficultyLevel, Category category) {
+        roundScreenController = new RoundScreenController(this, difficultyLevel, category);
         roundScreenController.showScreen();
     }
 
-    public void endGame(boolean winResult, Word wordToGuess, Set<String> guessedLetters) {
-        endGameScreenController.showScreen(winResult, wordToGuess, guessedLetters);
+    public void showEndGameScreen(boolean winResult, Word wordToGuess, Set<String> guessedLetters) {
+        endGameScreenController = new EndGameScreenController(this, winResult, wordToGuess, guessedLetters);
+        endGameScreenController.showScreen();
     }
 
     public SoundController getSoundController() {

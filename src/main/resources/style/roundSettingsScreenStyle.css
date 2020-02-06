@@ -1,0 +1,63 @@
+.modalBox {
+    -fx-background-image: url("/img/modalBackground.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: top center;
+}
+
+.optionLabel {
+    -fx-font: normal 16pt "Passion One";
+    -fx-text-fill: #9b7763;
+    -fx-text-align: center;
+}
+
+.btnDiffLvl {
+    -fx-font: normal 24pt "Passion One";
+    -fx-text-fill: #664330;
+    -fx-text-align: center;
+    -fx-padding: 8px 12px;
+}
+.btnDiffLvlActive {
+    -fx-font: normal 24pt "Passion One";
+    -fx-text-fill: #3a2011;
+    -fx-text-align: center;
+    -fx-padding: 8px 12px;
+    -fx-background-image: url("/img/selectBackground.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+#btnStart {
+    -fx-background-image: url("/img/buttonStart.png");
+    -fx-pref-width: 142px;
+    -fx-pref-height: 66px;
+}
+#btnStart:pressed {
+    -fx-background-image: url("/img/buttonStartPressed.png");
+}
+
+#btnBack {
+    -fx-background-image: url("/img/buttonBack.png");
+    -fx-pref-width: 50px;
+    -fx-pref-height: 58px;
+}
+#btnBack:pressed {
+    -fx-background-image: url("/img/buttonBackPressed.png");
+}
+
+.btnNext {
+ -fx-background-image: url("/img/buttonNext.png");
+ -fx-pref-width: 42px;
+ -fx-pref-height: 50px;
+}
+.btnNext:pressed {
+  -fx-background-image: url("/img/buttonNextPressed.png");
+}
+
+.btnPrev {
+ -fx-background-image: url("/img/buttonPrev.png");
+ -fx-pref-width: 42px;
+ -fx-pref-height: 50px;
+}
+.btnPrev:pressed {
+    -fx-background-image: url("/img/buttonPrevPressed.png");
+}

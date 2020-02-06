@@ -1,0 +1,31 @@
+#btnYes {
+ -fx-background-image: url("/img/buttonYes.png");
+ -fx-pref-width: 120px;
+ -fx-pref-height: 66px;
+}
+#btnYes:pressed {
+    -fx-background-image: url("/img/buttonYesPressed.png");
+}
+
+#btnNo {
+ -fx-background-image: url("/img/buttonNo.png");
+ -fx-pref-width: 120px;
+ -fx-pref-height: 66px;
+}
+#btnNo:pressed {
+    -fx-background-image: url("/img/buttonNoPressed.png");
+}
+
+.letterBackgroundPane {
+    -fx-background-image: url("/img/letterBackground.png");
+}
+
+.guessedLetterEndCorrect {
+     -fx-font: normal 36pt "Passion One";
+     -fx-text-fill: #89ab2c;
+}
+
+.guessedLetterEndWrong {
+    -fx-font: normal 36pt "Passion One";
+    -fx-text-fill: #b01e17;
+}

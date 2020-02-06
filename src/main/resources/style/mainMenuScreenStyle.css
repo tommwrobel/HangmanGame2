@@ -1,0 +1,12 @@
+#mainMenuMainPane {
+ -fx-background-image: url("/img/standardBackground.png");
+}
+
+#btnNewGame {
+ -fx-background-image: url("/img/buttonNewGame.png");
+ -fx-pref-width: 200px;
+ -fx-pref-height: 66px;
+}
+#btnNewGame:pressed {
+    -fx-background-image: url("/img/buttonNewGamePressed.png");
+}

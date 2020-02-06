@@ -1,5 +1,6 @@
 package com.tom.controller;
 
+import com.tom.model.Sound;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,6 +19,7 @@ public class MainMenuScreenController extends ScreenController {
 
     public MainMenuScreenController(MainController mainController) {
         super(mainController);
+        mainController.getSoundController().play(Sound.MAIN_MUSIC, true);
     }
 
     public void initialize() {
@@ -30,7 +32,7 @@ public class MainMenuScreenController extends ScreenController {
     }
 
     @FXML
-    public void chooseCategory() {
-        mainController.chooseCategory();
+    public void showRoundSettingsScreen() {
+        mainController.showRoundSettingsScreen();
     }
 }

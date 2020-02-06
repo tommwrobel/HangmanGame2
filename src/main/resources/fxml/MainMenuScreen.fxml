@@ -6,8 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-<Pane fx:id="mainMenu" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
-            prefWidth="500.0">
+<Pane fx:id="mainMenuMainPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0" prefWidth="500.0">
 
     <children>
         <Button fx:id="btnClose" layoutX="426" layoutY="20" styleClass="button" onAction="#exitGame" onMousePressed="#clickSound" focusTraversable="false"/>
@@ -16,7 +15,7 @@
             <Image url="/img/gameTitle.png"/>
         </ImageView>
 
-        <Button fx:id="btnNewGame" layoutX="150" layoutY="460" styleClass="button" onAction="#chooseCategory" onMousePressed="#clickSound"/>
+        <Button fx:id="btnNewGame" layoutX="150" layoutY="460" styleClass="button" onAction="#showRoundSettingsScreen" onMousePressed="#clickSound"/>
 
         <HBox prefWidth="500" alignment="CENTER" layoutY="568">
             <Label fx:id="footerMessage" textAlignment="CENTER"></Label>
@@ -25,7 +24,8 @@
     </children>
 
     <stylesheets>
-        <URL value="@../style/style.css"/>
+        <URL value="@../style/mainStyle.css"/>
+        <URL value="@../style/mainMenuScreenStyle.css"/>
     </stylesheets>
 
 </Pane>

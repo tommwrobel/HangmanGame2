@@ -1,0 +1,49 @@
+@font-face {
+    src: url("../fonts/PassionOne-Regular.ttf");
+}
+
+#roundSettingsMainPane, #roundScreenMainPane, #endGameMainPane {
+     -fx-background-image: url("/img/cleanBackground.png");
+}
+
+.infoMessage {
+    -fx-font: normal 24pt "Passion One";
+    -fx-text-fill: #ffe6d8;
+    -fx-text-align: center;
+}
+
+.secondaryMessage {
+    -fx-font: normal 24pt "Passion One";
+    -fx-text-fill: #37281d;
+    -fx-text-align: center;
+}
+
+#footerMessage {
+    -fx-font: normal 9pt "Arial";
+    -fx-text-fill: #65372c;
+}
+
+.button {
+ -fx-background-color: none;
+ -fx-cursor: hand;
+}
+
+#btnClose {
+    -fx-background-image: url("/img/buttonClose.png");
+    -fx-pref-width: 54px;
+    -fx-pref-height: 54px;
+}
+
+#btnClose:pressed {
+    -fx-background-image: url("/img/buttonClosePressed.png");
+}
+
+#btnBack {
+    -fx-background-image: url("/img/buttonBack.png");
+    -fx-pref-width: 50px;
+    -fx-pref-height: 58px;
+}
+
+#btnBack:pressed {
+    -fx-background-image: url("/img/buttonBackPressed.png");
+}

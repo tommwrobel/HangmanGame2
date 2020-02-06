@@ -10,7 +10,7 @@ public class Word {
     private List<String> letters;
 
     public Word(String word) {
-        this.word = word;
+        this.word = word.toUpperCase();
         this.letters = Arrays.asList(word.split("(?!^)"));
     }
 
@@ -23,13 +23,14 @@ public class Word {
     }
 
     public String getLetter(int index) {
-        return letters.get(index).toUpperCase();
+        return letters.get(index);
     }
 
-    public List<Integer> getLetterIndexes(String letter) {
+    public List<Integer> getLetterIndexes(String letterToCheck) {
+        letterToCheck = letterToCheck.toUpperCase();
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < getWordLength(); i++) {
-            if (letter.equalsIgnoreCase(getLetter(i))) {
+            if (letterToCheck.equals(getLetter(i))) {
                 result.add(i);
             }
         }

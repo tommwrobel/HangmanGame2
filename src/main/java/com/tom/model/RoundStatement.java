@@ -6,7 +6,8 @@ public enum RoundStatement {
     DUBEL("TRY SOMETHING ELSE!"),
     BAD_ANSWER("NOT GOOD."),
     HELLO("GOOD LUCK!"),
-    TIME_OUT("HURRY UP!");
+    TIME_OUT("HURRY UP!"),
+    WRONG_KEY("WRONG KEY!");
 
     private String statementText;
 

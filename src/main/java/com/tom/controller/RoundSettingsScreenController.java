@@ -10,10 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-public class NewGameScreenController extends ScreenController {
+public class RoundSettingsScreenController extends ScreenController {
 
     @FXML
-    private Pane newGameScreen;
+    private Pane roundSettingsMainPane;
     @FXML
     private HBox diffLvlButtons;
     @FXML
@@ -25,11 +25,11 @@ public class NewGameScreenController extends ScreenController {
     @FXML
     private Label footerMessage;
 
-    private static final String NEW_GAME_SCREEN = "/fxml/NewGameScreen.fxml";
+    private static final String NEW_GAME_SCREEN = "/fxml/RoundSettingsScreen.fxml";
     private DifficultyLevel currentDifficultyLevel;
     private Category currentCategory;
 
-    public NewGameScreenController(MainController mainController) {
+    public RoundSettingsScreenController(MainController mainController) {
         super(mainController);
         currentDifficultyLevel = DifficultyLevel.values()[0];
         currentCategory = Category.values()[0];
@@ -101,6 +101,6 @@ public class NewGameScreenController extends ScreenController {
 
     @FXML
     public void startRound() {
-        mainController.startRound(currentDifficultyLevel, currentCategory);
+        mainController.showRoundScreen(currentDifficultyLevel, currentCategory);
     }
 }

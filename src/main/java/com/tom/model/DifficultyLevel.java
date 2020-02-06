@@ -1,20 +1,26 @@
 package com.tom.model;
 
 public enum DifficultyLevel {
-    EASY(10,45),
-    MEDIUM(8, 30),
-    HARD(6, 15);
+    EASY(3,5, 40),
+    MEDIUM(6, 7, 30),
+    HARD(8,9, 20);
 
-    private int chances;
+    private int minWordLength;
+    private int maxWordLength;
     private int roundTime;
 
-    DifficultyLevel(int chances, int roundTime) {
-        this.chances = chances;
+    DifficultyLevel(int minWordLength, int maxWordLength, int roundTime) {
+        this.maxWordLength = maxWordLength;
+        this.minWordLength = minWordLength;
         this.roundTime = roundTime;
     }
 
-    public int getChances() {
-        return chances;
+    public int getMaxWordLength() {
+        return maxWordLength;
+    }
+
+    public int getMinWordLength() {
+        return minWordLength;
     }
 
     public int getRoundTime() {

@@ -34,7 +34,7 @@ public abstract class ScreenController {
 
     @FXML
     public void backToMainMenu() {
-        mainController.startGame();
+        mainController.showMainMenuScreen();
     }
 
     @FXML

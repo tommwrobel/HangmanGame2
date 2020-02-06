@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<Pane fx:id="endGameScreen" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
+<Pane fx:id="endGameMainPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="600.0"
       prefWidth="500.0">
 
     <children>
@@ -32,8 +32,8 @@
             </StackPane>
 
             <HBox prefWidth="500" spacing="10" alignment="CENTER">
-                <Button fx:id="btnYes" styleClass="button" onAction="#startGame" onMousePressed="#clickSound"/>
-                <Button fx:id="btnNo" styleClass="button" onAction="#goToMainMenu" onMousePressed="#clickSound"/>
+                <Button fx:id="btnYes" styleClass="button" onAction="#showRoundSettingsScreen" onMousePressed="#clickSound"/>
+                <Button fx:id="btnNo" styleClass="button" onAction="#showMainMenuScreen" onMousePressed="#clickSound"/>
             </HBox>
         </VBox>
 
@@ -43,6 +43,7 @@
     </children>
 
     <stylesheets>
-        <URL value="@../style/style.css"/>
+        <URL value="@../style/mainStyle.css"/>
+        <URL value="@../style/endGameScreenStyle.css"/>
     </stylesheets>
 </Pane>

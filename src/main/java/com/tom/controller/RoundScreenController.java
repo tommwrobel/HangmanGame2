@@ -19,17 +19,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class RoundScreenController extends ScreenController {
 
     @FXML
-    private Pane roundScreen;
+    private Pane roundScreenMainPane;
     @FXML
     private Button btnClose;
     @FXML
@@ -45,8 +42,6 @@ public class RoundScreenController extends ScreenController {
     @FXML
     private StackPane gallows;
     @FXML
-    private Label footerMessage;
-    @FXML
     private ImageView sun;
     @FXML
     private ImageView backgroundSky;
@@ -54,34 +49,32 @@ public class RoundScreenController extends ScreenController {
     private ImageView backgroundSkyRed;
     @FXML
     private ImageView backgroundFirst;
+    @FXML
+    private Label footerMessage;
 
     private static final String ROUND_SCREEN = "/fxml/RoundScreen.fxml";
 
     private DifficultyLevel difficultyLevel;
-    private Category category;
     private Word wordToGuess;
-    private int timer;
+    private int chancesLeft;
+    private int secondsPassed;
     private Timeline timeline;
     private Set<String> guessedLetters = new HashSet<>();
-    private int chancesLeft;
 
-    public RoundScreenController(MainController mainController) {
+    public RoundScreenController(MainController mainController, DifficultyLevel difficultyLevel, Category category) {
         super(mainController);
-        this.timer = 0;
+
+        this.difficultyLevel = difficultyLevel;
+        this.wordToGuess = new Word(category.getRandomWord(difficultyLevel.getMinWordLength(), difficultyLevel.getMaxWordLength()));
+        System.out.println(wordToGuess.getWord());
+        this.secondsPassed = 0;
+        this.guessedLetters.clear();
+        this.chancesLeft = 10;
     }
 
     public void initialize() {
         footerMessage.setText(mainController.getFooterMessageText());
-        timeLeft.setText("00:00");
-    }
-
-    public void setupNewRound(DifficultyLevel difficultyLevel, Category category) {
-        this.difficultyLevel = difficultyLevel;
-        this.category = category;
-        this.guessedLetters.clear();
-        this.wordToGuess = getRandomWordToGuess(category);
-        this.chancesLeft = difficultyLevel.getChances();
-        this.timer = 0;
+        timeLeft.setText(formatTime(difficultyLevel.getRoundTime()));
     }
 
     public void showScreen() {
@@ -92,26 +85,26 @@ public class RoundScreenController extends ScreenController {
         showStatement(RoundStatement.HELLO);
         userInput.setText("");
         btnGo.requestFocus();
-        buildHangman(10, 11 - difficultyLevel.getChances());
         sunDown();
 
-        roundScreen.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+        roundScreenMainPane.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if (key.getCode() == KeyCode.SPACE || key.getCode() == KeyCode.ENTER) {
                 checkLetter();
+            } else if (key.getCode().isLetterKey()) {
+                userInput.setText(key.getCode().toString().toUpperCase());
+            } else {
+                showStatement(RoundStatement.WRONG_KEY);
             }
-            userInputSetLetter(key.getCode().toString());
         });
 
         if (timeline != null) {
             timeline.stop();
         }
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            int allSecondsLeft = difficultyLevel.getRoundTime() - timer;
+            int allSecondsLeft = difficultyLevel.getRoundTime() - secondsPassed - 1;
             if (allSecondsLeft >= 0) {
-                int secondsLeft = allSecondsLeft % 60;
-                int minutesLeft = allSecondsLeft / 60;
-                timeLeft.setText(String.format("%02d:%02d", minutesLeft, secondsLeft));
-                timer++;
+                timeLeft.setText(formatTime(allSecondsLeft));
+                secondsPassed++;
                 if (allSecondsLeft < 6) {
                     ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.3), timeLeft);
                     scaleTransition.setFromX(1.1);
@@ -125,12 +118,18 @@ public class RoundScreenController extends ScreenController {
                 showStatement(RoundStatement.TIME_OUT);
             }
             if (allSecondsLeft < 0) {
-                endGame(false);
                 timeline.stop();
+                showEndGameScreen(false);
             }
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+    }
+
+    private String formatTime(int seconds) {
+        int secondsLeft = seconds % 60;
+        int minutesLeft = seconds / 60;
+        return String.format("%02d:%02d", minutesLeft, secondsLeft);
     }
 
     private void sunDown() {
@@ -146,21 +145,18 @@ public class RoundScreenController extends ScreenController {
         fadeTransition.play();
     }
 
-    private void buildHangman(int from, int numberOfPieces) {
-        for (int i = 0; i < numberOfPieces; i++) {
-            String link = "/img/hm" + (from - i) + ".png";
-            Image img = new Image(link);
-            ImageView imgV = new ImageView(img);
-            gallows.getChildren().add(imgV);
+    private void buildHangman() {
+        String imgUrl = "/img/hm" + chancesLeft + ".png";
+        Image img = new Image(imgUrl);
+        ImageView imgV = new ImageView(img);
+        gallows.getChildren().add(imgV);
 
-            TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.2), imgV);
-            translateTransition.setFromY(-200);
-            translateTransition.setToY(0);
-            translateTransition.setInterpolator(Interpolator.EASE_IN);
-            translateTransition.play();
-        }
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.2), imgV);
+        translateTransition.setFromY(-200);
+        translateTransition.setToY(0);
+        translateTransition.setInterpolator(Interpolator.EASE_IN);
+        translateTransition.play();
     }
-
 
     private void showWordToGuess() {
         wordRow.getChildren().clear();
@@ -228,12 +224,12 @@ public class RoundScreenController extends ScreenController {
                 updateLetterText(letter);
                 showStatement(RoundStatement.GOOD_ANSWER);
                 if (checkWin()) {
-                    endGame(true);
+                    showEndGameScreen(true);
                 }
             } else if (!guessedLetters.contains(letter)) {
                 guessedLetters.add(letter);
                 deleteChance();
-                buildHangman(chancesLeft, 1);
+                buildHangman();
                 showStatement(RoundStatement.BAD_ANSWER);
             } else {
                 showStatement(RoundStatement.DUBEL);
@@ -243,7 +239,7 @@ public class RoundScreenController extends ScreenController {
 
     private void deleteChance() {
         if (chancesLeft == 1) {
-            endGame(false);
+            showEndGameScreen(false);
         } else {
             chancesLeft -= 1;
         }
@@ -259,37 +255,9 @@ public class RoundScreenController extends ScreenController {
     }
 
     @FXML
-    private void endGame(boolean winResult) {
+    private void showEndGameScreen(boolean winResult) {
         timeline.stop();
-        mainController.endGame(winResult, wordToGuess, guessedLetters);
-    }
-
-    private void userInputSetLetter(String letter) {
-        if (letter.matches("[A-Za-z*]")) {
-            letter = letter.toUpperCase();
-            userInput.setText(letter);
-        }
-    }
-
-    private Word getRandomWordToGuess(Category category) {
-
-        InputStream inputStream = this.getClass().getResourceAsStream(category.getDataFile());
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-        Stream<String> wynik = null;
-        try {
-            wynik = bufferedReader.lines();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        List<String> lines = wynik.collect(Collectors.toList());
-        ArrayList<String> words = new ArrayList<>(lines);
-        Collections.shuffle(words);
-
-        wordToGuess = new Word(words.get(0).toUpperCase());
-        System.out.println(wordToGuess.getWord());
-        return wordToGuess;
+        mainController.showEndGameScreen(winResult, wordToGuess, guessedLetters);
     }
 
     @Override
