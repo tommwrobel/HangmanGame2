@@ -24,7 +24,7 @@ public class MainController {
 
     public MainController() {
         this.soundController = new SoundController();
-        this.footerMessageText = "HangmanGame2 v.1.0 © 2020 by Tomasz Wróbel.";
+        this.footerMessageText = "HangmanGame2 v.1.1 © 2020 by Tomasz Wróbel.";
     }
 
     @FXML

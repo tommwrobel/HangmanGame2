@@ -11,7 +11,7 @@ public class Word {
 
     public Word(String word) {
         this.word = word.toUpperCase();
-        this.letters = Arrays.asList(word.split("(?!^)"));
+        this.letters = Arrays.asList(this.word.split("(?!^)"));
     }
 
     public String getWord() {
@@ -27,10 +27,9 @@ public class Word {
     }
 
     public List<Integer> getLetterIndexes(String letterToCheck) {
-        letterToCheck = letterToCheck.toUpperCase();
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < getWordLength(); i++) {
-            if (letterToCheck.equals(getLetter(i))) {
+            if (letterToCheck.equalsIgnoreCase(getLetter(i))) {
                 result.add(i);
             }
         }
@@ -40,7 +39,7 @@ public class Word {
     public int contains(String letterToCheck) {
         int counter = 0;
         for (String letterInWord : letters) {
-            if (letterInWord.equals(letterToCheck)) {
+            if (letterInWord.equalsIgnoreCase(letterToCheck)) {
                 counter++;
             }
         }
