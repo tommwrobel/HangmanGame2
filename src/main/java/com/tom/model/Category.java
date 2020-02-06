@@ -43,7 +43,7 @@ public enum Category {
             e.printStackTrace();
         }
 
-        List<String> lines = wynik.collect(Collectors.toList()).stream().filter(e -> (e.length() >= minLength) && e.length() <= maxLength).collect(Collectors.toList());
+        List<String> lines = wynik.filter(e -> (e.length() >= minLength) && e.length() <= maxLength).collect(Collectors.toList());
         ArrayList<String> words = new ArrayList<>(lines);
         Collections.shuffle(words);
 
