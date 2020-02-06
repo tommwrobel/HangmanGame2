@@ -1,6 +1,10 @@
 package com.tom.model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class WordTest {
 
     @Test
+    @DisplayName("Method getLetterIndexes() should return list of proper letter indexes in given word")
     public void gettingLetterIndexesListShouldReturnProperIndexes() {
         String wordToTest;
         String letterToCheck;
@@ -24,33 +29,41 @@ class WordTest {
         assertThat(finalValues).contains(0, 3, 5, 7, 10);
     }
 
-    @Test
-    public void gettingNumbersOfLettersInWord() {
-        String wordToTest;
-        String letterToCheck;
+    @ParameterizedTest(name = "#{index} Amount of ''{0}'' letter in word ''{1}'' is {2}")
+    @CsvSource({
+            "a, Abracadabra, 5",
+            "e, Bee, 2",
+            "T, Tetris, 2",
+            "p, pPpPxP, 5"
+    })
+    @DisplayName("Method contains() should return proper number of given letter in given word")
+    public void gettingNumbersOfLettersInWord(String givenLetter, String givenWord, int expectedAmount) {
+
         Word word;
-        int result;
+        int actualAmout;
 
-        wordToTest = "Abracadabra";
-        letterToCheck = "a";
-        word = new Word(wordToTest);
-        result = word.contains(letterToCheck);
+        word = new Word(givenWord);
+        actualAmout = word.contains(givenLetter);
 
-        assertThat(result).isEqualTo(5);
+        assertThat(actualAmout).isEqualTo(expectedAmount);
     }
 
-    @Test
-    public void methodShouldReturnProberWordLengthValue() {
+    @ParameterizedTest(name = "#{index} Length of ''{0}'' is {1}")
+    @CsvSource({
+            "Abracadabra, 11",
+            "Bee, 3",
+            "a, 1"
+    })
+    @DisplayName("Method .getWordLength() should return proper length of given word")
+    public void methodShouldReturnProberWordLengthValue(String givenWord, int expectedLength) {
 
-        String wordToTest;
-        Word word;
+        Word wordClass;
         int result;
 
-        wordToTest = "Abracadabra";
-        word = new Word(wordToTest);
-        result = word.getWordLength();
+        wordClass = new Word(givenWord);
+        result = wordClass.getWordLength();
 
-        assertThat(result).isEqualTo(11);
+        assertThat(result).isEqualTo(expectedLength);
     }
 
 }
