@@ -9,40 +9,51 @@
     <version>1.1</version>
 
     <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <junit-version>5.6.0</junit-version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit-jupiter.version>5.6.0</junit-jupiter.version>
+        <allure-junit5.version>2.13.1</allure-junit5.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+
+        <java.version>1.8</java.version>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+
+        <project.encondig>UTF-8</project.encondig>
+        <project.build.sourceEncoding>${project.encondig}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${project.encondig}</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure-junit5.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit-version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.15.0</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -79,7 +90,26 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.junit5.AllureJunit5</value>
+                        </property>
+                    </properties>
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${project.build.directory}/allure-results</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
             </plugin>
         </plugins>
     </build>

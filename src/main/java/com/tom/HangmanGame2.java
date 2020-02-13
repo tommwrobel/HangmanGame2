@@ -13,6 +13,8 @@ public class HangmanGame2 extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        System.setProperty("prism.lcdtext", "false");
+
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(this.getClass().getResource("/fxml/MainScreen.fxml"));
         Pane rootPane = fxmlLoader.load();
