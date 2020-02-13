@@ -1,6 +1,5 @@
 # General info
-This project is for improve Java and testing skills.
-
+Simple desktop game i wrote to improve Java skills. The game is all about guessing words from several categories. There are also 3 difficulty levels to choose. I wrote this game from scratch, and also i designed all graphic elements by myself.
 ## Table of contents
 * [Project description](#general-info)
 * [Technologies, libraries, tools](#technologies,-libraries,-tools)
@@ -9,7 +8,8 @@ This project is for improve Java and testing skills.
 * [Screenshots](#screenshots)
 
 ## Project description
-This project is for impove Java and Testing skills. Graphic is also my work.
+This project is for impove Java and testing skills. Graphic is also my work. 
+I chose JavaFX for UI and i used FXML and CSS files to generate game UI.
 
 ## Technologies, libraries, tools
 * Java 8
@@ -17,18 +17,21 @@ This project is for impove Java and Testing skills. Graphic is also my work.
     * MVC pattern
 * Maven
 * VCS Git
-* JUnit
+* JUnit5
+* AssertJ
+* Allure Test Report
 * IntelliJ IDE
 * Adobe Photoshop
 * Adobe Illustrator
 
 ## Unit tests
-Some txt about tests and used libraries.
+I wrote 10 unit tests to test some basic functions of some models. I used Junit5, AssertJ and Allure to generate test report.
 
 ## TODO
 * End game animations
-* Code refractoring
+* ~~Code refractoring~~
 * Music nad sound effects
+* Punctation and levels
 
 ## Screenshots
 
